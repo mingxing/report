@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Widget</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css">
+    <style>
+    
+
+    .hero-content {
+    color: #fff;
+    inset: 50% 42px 80px 42px;
+    position: absolute;
+    z-index: 2;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    justify-content: stretch
+}
+.hero-content button {
+        border: 0;
+        background: 0 0;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        -webkit-appearance: none
+    }
+.link--primary-icon span {
+    border-color: #85c6cc;
+}
+.link {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    -webkit-padding-after: 10px;
+    padding-block-end:10px;place-items: center start;
+    position: relative;
+    -webkit-transition: color .5s ease-in-out;
+    transition: color .5s ease-in-out;
+    font-family: "Jost",sans-serif;
+    font-size: 15px;
+    line-height: 15px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 600
+}
+
+.link:hover {
+    text-decoration: none
+}
+.link span {
+    border: 2px solid #85c6cc;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    height: 48px;
+    width: 48px
+}
+@media(min-width: 1280px) {
+    .link span {
+        height:65px;
+        width: 65px
+    }
+}
+
+.link span:after {
+    content: "";
+    display: block;
+    position: static;
+    border: solid #85c6cc;
+    border-width: 0 3px 3px 0;
+    padding: 5px;
+    pointer-events: none;
+    top: 50%;
+    margin-left: -5px;
+    -webkit-transform: translateY(-50%) rotate(315deg);
+    transform: translateY(-50%) rotate(315deg);
+    -webkit-transform: rotate(315deg);
+    transform: rotate(315deg)
+}
+.link--white-icon {
+    color: #fff;
+    gap: 20px;
+    -webkit-padding-after: 0;
+    padding-block-end:0}
+
+.link--white-icon span {
+    border-color: #fff
+}
+
+.link--white-icon span:after {
+    border-color: #fff
+}
+
+.link--white-icon:hover {
+    color: #fff
+}
+
+.link--black-icon {
+    color: #000;
+    gap: 20px;
+    -webkit-padding-after: 0;
+    padding-block-end:0}
+
+.link--black-icon span {
+    border-color: #000
+}
+
+.link--black-icon span:after {
+    border-color: #000
+}
+
+.link--black-icon:hover {
+    color: #000
+}
+
+.link--primary-icon {
+    color: #85c6cc;
+    gap: 20px;
+    -webkit-padding-after: 0;
+    padding-block-end:0}
+
+.link--primary-icon span {
+    border-color: #85c6cc
+}
+
+.link--primary-icon span:after {
+    border-color: #85c6cc
+}
+
+.link--primary-icon:hover {
+    color: #85c6cc
+}
+
+.link--svg span {
+    border: none;
+    width: auto;
+    height: auto;
+    margin-right: 16px
+}
+
+.link--svg span:after {
+    display: none
+}
+
+.link--svg .v-icon__svg {
+    width: 30px;
+    height: 30px
+}
+
+.link--white {
+    color: #fff
+}
+
+.link--white:after {
+    background-color: currentColor;
+    height: 2px;
+    inset: auto 0 2px 0;
+    -webkit-transition: background-color .5s ease-in-out;
+    transition: background-color .5s ease-in-out;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.link--white:hover {
+    color: var(--color-primary)
+}
+
+.link--black {
+    color: #000
+}
+
+.link--black:after {
+    background-color: currentColor;
+    height: 2px;
+    inset: auto 0 2px 0;
+    -webkit-transition: background-color .5s ease-in-out;
+    transition: background-color .5s ease-in-out;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.link--black:hover {
+    color: var(--color-primary)
+}
+        .hero-booking-widget {
+    background-color: rgba(0,0,0,0);
+    gap: 68px;
+    margin-inline:auto;
+    padding-block:18px;
+    padding-inline:38px;
+    -webkit-transition: 
+    background-color .5s ease-in-out;
+    transition: background-color .5s ease-in-out;
+    width: min(100%,1180px);
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    justify-content: stretch
+}
+
+@media(max-width: 1279.98px) {
+    .hero-booking-widget {
+        display:none
+    }
+}
+
+@media(min-width: 1920px) {
+    .hero-booking-widget {
+        gap:140px;
+        width: min(100%,1462px)
+    }
+}
+
+.hero-booking-widget:hover {
+    background-color: #000
+}
+
+.hero-booking-widget__item {
+    position: relative
+}
+
+.hero-booking-widget__item:before {
+    height: 40%;
+    inset: 50% -34px auto auto;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-right: 1px solid #fff;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+@media(min-width: 1920px) {
+    .hero-booking-widget__item:before {
+        inset:50% -70px auto auto
+    }
+}
+
+.hero-booking-widget__item:after {
+    border-bottom: 1px solid #fff;
+    inset: auto 0 0 0;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.hero-booking-widget__item label {
+    display: block;
+    text-align: left;
+    width: 100%;
+    font-family: "Jost",sans-serif;
+    font-size: 15px;
+    line-height: 15px;
+    text-transform: uppercase;
+    font-weight: 700
+}
+
+.hero-booking-widget__item input,.hero-booking-widget__item .guest-toggle,.hero-booking-widget__item .date-toggle,.hero-booking-widget__item .hotel-toggle {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    color: #fff;
+    font-style: italic;
+    padding: 8px 0;
+    text-align: left;
+    width: 100%;
+    font-size: 13px;
+    line-height: 14px;
+    letter-spacing: .05em
+}
+
+.hero-booking-widget__item input::-webkit-input-placeholder,.hero-booking-widget__item .guest-toggle::-webkit-input-placeholder,.hero-booking-widget__item .date-toggle::-webkit-input-placeholder,.hero-booking-widget__item .hotel-toggle::-webkit-input-placeholder {
+    color: #fff
+}
+
+.hero-booking-widget__item input::-moz-placeholder,.hero-booking-widget__item .guest-toggle::-moz-placeholder,.hero-booking-widget__item .date-toggle::-moz-placeholder,.hero-booking-widget__item .hotel-toggle::-moz-placeholder {
+    color: #fff
+}
+
+.hero-booking-widget__item input::-ms-input-placeholder,.hero-booking-widget__item .guest-toggle::-ms-input-placeholder,.hero-booking-widget__item .date-toggle::-ms-input-placeholder,.hero-booking-widget__item .hotel-toggle::-ms-input-placeholder {
+    color: #fff
+}
+
+.hero-booking-widget__item input::placeholder,.hero-booking-widget__item .guest-toggle::placeholder,.hero-booking-widget__item .date-toggle::placeholder,.hero-booking-widget__item .hotel-toggle::placeholder {
+    color: #fff
+}
+
+.hero-booking-widget__item--hotel {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 175px;
+    flex: 1 1 175px
+}
+
+.hero-booking-widget__item--hotel .v-icon__svg {
+    height: 16px;
+    width: 12px
+}
+
+.hero-booking-widget__item--date {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 250px;
+    flex: 1 1 250px
+}
+
+.hero-booking-widget__item--guests {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 108px;
+    flex: 1 1 108px
+}
+
+.hero-booking-widget__item--promo {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 138px;
+    flex: 1 1 138px
+}
+
+.hero-booking-widget__item--promo:before {
+    border: none
+}
+
+.hero-booking-widget__item-wrapper {
+    position: relative
+}
+
+.v-icon__svg {
+    height: 1em;
+    width: 1em;
+    display: inline-block;
+}
+
+.hero-booking-widget__item-wrapper--arrow {
+    position: relative;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    cursor: pointer
+}
+
+.hero-booking-widget__item-wrapper--arrow span {
+    padding-right: 8px;
+    pointer-events: none
+}
+
+.hero-booking-widget__item-wrapper--arrow:after {
+    cursor: pointer;
+    inset: 50% 0 auto auto;
+    -webkit-transform: translateY(-50%) rotate(45deg);
+    transform: translateY(-50%) rotate(45deg);
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    padding: 3px;
+    pointer-events: none;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.hero-booking-widget .date-toggle {
+    cursor: pointer
+}
+
+.hero-booking-widget .js-guests {
+    color: #fff
+}
+
+.hero-booking-widget__arrive input,.hero-booking-widget__depart input {
+    color: #fff
+}
+
+.hero-booking-widget__arrive {
+    -webkit-margin-start: 0;
+    margin-inline-start:0}
+
+.hero-booking-widget__guests {
+    background-color: #fff;
+    color: #000;
+    display: none;
+    -webkit-filter: drop-shadow(0 8px 11px rgba(33,37,41,.2)) drop-shadow(0 4px 5px rgba(33,37,41,.03)) drop-shadow(0 1px 2px rgba(33,37,41,.02));
+    filter: drop-shadow(0 8px 11px rgba(33,37,41,.2)) drop-shadow(0 4px 5px rgba(33,37,41,.03)) drop-shadow(0 1px 2px rgba(33,37,41,.02));
+    gap: 24px;
+    padding: 48px 32px 32px;
+    position: absolute;
+    z-index: 6;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: .02em
+}
+
+@media(min-width: 1280px) {
+    .hero-booking-widget__guests {
+        -webkit-transform:translateY(8px);
+        transform: translateY(8px)
+    }
+}
+
+.hero-booking-widget__guests[data-expanded=true] {
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    justify-content: stretch
+}
+
+.hero-booking-widget__guests__control-row {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr 32px 32px 32px;
+    grid-template-rows: 32px;
+    place-items: center
+}
+
+.hero-booking-widget__guests__control {
+    --foreground-color: var(--color-primary);
+    --background-color: $white;
+    background-color: var(--background-color);
+    border: 1px solid var(--foreground-color);
+    position: relative;
+    -webkit-transition: background-color .3s ease-in-out,border .3s ease-in-out;
+    transition: background-color .3s ease-in-out,border .3s ease-in-out;
+    border-radius: 50%;
+    height: 32px;
+    width: 32px
+}
+
+.hero-booking-widget__guests__control:hover {
+    --foreground-color: $white;
+    --background-color: var(--color-primary)
+}
+
+.hero-booking-widget__guests__control--increase:before {
+    background-color: #000;
+    height: 12px;
+    inset: 50% auto auto 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    -webkit-transition: background-color .3s ease-in-out;
+    transition: background-color .3s ease-in-out;
+    width: 1px;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.hero-booking-widget__guests__control:after {
+    background-color: #000;
+    height: 1px;
+    inset: 50% auto auto 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    -webkit-transition: background-color .3s ease-in-out;
+    transition: background-color .3s ease-in-out;
+    width: 12px;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.hero-booking-widget__guests__control:disabled {
+    --foreground-color: #808285;
+    --background-color: #eee
+}
+
+.hero-booking-widget__guests__label {
+    text-align: left;
+    width: 100%
+}
+
+.hero-booking-widget__guests__close {
+    height: 24px;
+    inset: 12px 12px auto auto;
+    position: absolute;
+    width: 24px
+}
+
+.hero-booking-widget__guests__close span {
+    pointer-events: none;
+    position: relative
+}
+
+.hero-booking-widget__guests__close span:before,.hero-booking-widget__guests__close span:after {
+    background-color: #000;
+    height: 1px;
+    inset: 50% auto auto 50%;
+    width: 12px;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.hero-booking-widget__guests__close span:before {
+    -webkit-transform: translate(-50%,-50%) rotate(45deg);
+    transform: translate(-50%,-50%) rotate(45deg)
+}
+
+.hero-booking-widget__guests__close span:after {
+    -webkit-transform: translate(-50%,-50%) rotate(-45deg);
+    transform: translate(-50%,-50%) rotate(-45deg)
+}
+
+.hero-booking-widget__submit {
+    -webkit-margin-start: -34px;
+    margin-inline-start:-34px}
+
+@media(min-width: 1920px) {
+    .hero-booking-widget__submit {
+        -webkit-margin-start:-70px;
+        margin-inline-start:-70px}
+}
+
+.hero-booking-widget--widget {
+    position: absolute;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    width: 375px
+}
+
+.hero-booking-widget--widget[data-expanded=true] {
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    justify-content: stretch
+}
+
+.hero-booking-widget .link--primary-icon {
+    min-width: 220px
+}
+.booking-hotel-list {
+    background-color: #fff;
+    display: none;
+    -webkit-filter: drop-shadow(0 8px 11px rgba(33,37,41,.2)) drop-shadow(0 4px 5px rgba(33,37,41,.03)) drop-shadow(0 1px 2px rgba(33,37,41,.02));
+    filter: drop-shadow(0 8px 11px rgba(33,37,41,.2)) drop-shadow(0 4px 5px rgba(33,37,41,.03)) drop-shadow(0 1px 2px rgba(33,37,41,.02));
+    position: absolute;
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+    z-index: 6
+}
+
+.booking-hotel-list[data-expanded=true] {
+    display: block;
+    -webkit-animation-name: fade-in;
+    animation-name: fade-in;
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s
+}
+
+.booking-hotel-list__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    justify-content: stretch
+}
+
+.booking-hotel-list__option {
+    padding: 16px;
+    position: relative;
+    text-align: left;
+    -webkit-transition: color .5s ease-in-out;
+    transition: color .5s ease-in-out;
+    width: 100%;
+    font-size: 21px;
+    color: #000;
+    line-height: 30px
+}
+
+.booking-hotel-list__option:hover {
+    color: var(--color-primary)
+}
+
+.booking-hotel-list__option+.booking-hotel-list__option:before {
+    background-color: #9e9e9e;
+    height: 1px;
+    inset: 0 16px auto 16px;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.mobile-booking-widget__wrapper {
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    z-index: 6;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    justify-content: stretch;
+    width: 100%
+}
+
+@media(min-width: 1280px) {
+    .mobile-booking-widget__wrapper {
+        display:none
+    }
+}
+
+.mobile-booking-widget__wrapper>button,.mobile-booking-widget__wrapper>a {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1
+}
+
+.mobile-booking-widget .btn-block:hover {
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+.mobile-booking-widget .contact-us-btn {
+    background-color: #000;
+    color: #fff;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    line-height: 15px;
+    text-transform: uppercase
+}
+
+.mobile-booking-widget .contact-us-btn__num,.mobile-booking-widget .contact-us-btn__label {
+    padding-left: 10px;
+    font-family: "Jost",sans-serif;
+    font-size: 15px;
+    letter-spacing: 5px;
+    font-weight: 500
+}
+
+@media(max-width: 767.98px) {
+    .mobile-booking-widget .contact-us-btn__num {
+        display:none
+    }
+}
+
+@media(min-width: 576px) {
+    .mobile-booking-widget .contact-us-btn__label {
+        display:none
+    }
+.mobile-widget {
+    background-color: #fff;
+    display: none;
+    inset: 0 auto auto 0;
+    gap: 32px;
+    margin: 0 auto;
+    padding-block:32px;padding-inline:40px;position: absolute;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    width: min(100%,375px)
+}
+
+.mobile-widget[data-visible=true] {
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start
+}
+
+.mobile-widget__close {
+    font-family: "Jost",sans-serif;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: var(--color-primary);
+    inset: 0 0 auto auto;
+    position: absolute;
+    padding-block:18px;padding-inline:32px;-webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-transition: background-color .5s ease-in-out;
+    transition: background-color .5s ease-in-out;
+    cursor: pointer
+}
+
+.mobile-widget__close:after {
+    display: inline-block;
+    content: "×";
+    font-size: 20px;
+    padding-left: 10px
+}
+
+.mobile-widget__close:hover {
+    background-color: #fff
+}
+
+.mobile-widget__item {
+    position: relative
+}
+
+.mobile-widget__item:after {
+    background-color: #000;
+    height: 1px;
+    inset: auto 0 0 0;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.mobile-widget__item label {
+    font-family: "Jost",sans-serif;
+    font-size: 15px;
+    line-height: 15px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: left;
+    width: 100%
+}
+
+.mobile-widget__item input,.mobile-widget__item .guest-toggle,.mobile-widget__item .date-toggle,.mobile-widget__item .hotel-toggle {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    font-style: italic;
+    padding: 8px 24px 8px 0;
+    text-align: left;
+    width: 100%;
+    font-size: 13px;
+    line-height: 14px;
+    letter-spacing: .05em
+}
+
+.mobile-widget__item-wrapper {
+    position: relative;
+    min-width: 200px
+}
+
+.mobile-widget__item-wrapper--arrow {
+    position: relative;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.mobile-widget__item-wrapper--arrow span {
+    padding-right: 8px;
+    cursor: pointer
+}
+
+.mobile-widget__item-wrapper--arrow:after {
+    inset: 50% 0 auto auto;
+    -webkit-transform: translateY(-50%) rotate(45deg);
+    transform: translateY(-50%) rotate(45deg);
+    border-color: #000;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    padding: 3px;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.mobile-widget__guests {
+    background-color: #fff;
+    color: #000;
+    display: none;
+    -webkit-filter: drop-shadow(0 8px 11px rgba(33,37,41,.2)) drop-shadow(0 4px 5px rgba(33,37,41,.03)) drop-shadow(0 1px 2px rgba(33,37,41,.02));
+    filter: drop-shadow(0 8px 11px rgba(33,37,41,.2)) drop-shadow(0 4px 5px rgba(33,37,41,.03)) drop-shadow(0 1px 2px rgba(33,37,41,.02));
+    gap: 24px;
+    padding: 48px 32px 32px;
+    position: absolute;
+    z-index: 10;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: .02em
+}
+
+.mobile-widget__guests[data-expanded=true] {
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    justify-content: stretch
+}
+
+.mobile-widget__guests__control-row {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr 32px 32px 32px;
+    grid-template-rows: 32px;
+    place-items: center
+}
+
+.mobile-widget__guests__control {
+    --foreground-color: var(--color-primary);
+    --background-color: #fff;
+    background-color: var(--background-color);
+    border: 1px solid var(--foreground-color);
+    position: relative;
+    -webkit-transition: background-color .3s ease-in-out,border .3s ease-in-out;
+    transition: background-color .3s ease-in-out,border .3s ease-in-out;
+    border-radius: 50%;
+    height: 32px;
+    width: 32px
+}
+
+.mobile-widget__guests__control:hover {
+    --foreground-color: #fff;
+    --background-color: var(--color-primary)
+}
+
+.mobile-widget__guests__control--increase:before {
+    background-color: #000;
+    height: 12px;
+    inset: 50% auto auto 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    -webkit-transition: background-color .3s ease-in-out;
+    transition: background-color .3s ease-in-out;
+    width: 1px;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.mobile-widget__guests__control:after {
+    background-color: #000;
+    height: 1px;
+    inset: 50% auto auto 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    -webkit-transition: background-color .3s ease-in-out;
+    transition: background-color .3s ease-in-out;
+    width: 12px;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.mobile-widget__guests__control:disabled {
+    --foreground-color: #808285;
+    --background-color: #eee
+}
+
+.mobile-widget__guests__label {
+    text-align: left;
+    width: 100%
+}
+
+.mobile-widget__guests__close {
+    height: 24px;
+    inset: 12px 12px auto auto;
+    position: absolute;
+    width: 24px
+}
+
+.mobile-widget__guests__close span {
+    pointer-events: none;
+    position: relative
+}
+
+.mobile-widget__guests__close span:before,.mobile-widget__guests__close span:after {
+    background-color: #000;
+    height: 1px;
+    inset: 50% auto auto 50%;
+    width: 12px;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.mobile-widget__guests__close span:before {
+    -webkit-transform: translate(-50%,-50%) rotate(45deg);
+    transform: translate(-50%,-50%) rotate(45deg)
+}
+
+.mobile-widget__guests__close span:after {
+    -webkit-transform: translate(-50%,-50%) rotate(-45deg);
+    transform: translate(-50%,-50%) rotate(-45deg)
+}
+
+.mobile-widget--widget {
+    position: absolute;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    width: 375px
+}
+
+.mobile-widget--widget[data-expanded=true] {
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    justify-content: stretch
+}
+
+.mobile-widget .booking-hotel-list {
+    inset: auto 0 0 0;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%)
+}
+
+#mobile-widget-header {
+    color: #000;
+    inset: auto 0 0 auto;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    width: min(100vw,375px)
+}
+
+@media(max-width: 1279.98px) {
+    #mobile-widget-header {
+        display:none
+    }
+}
+
+#mobile-widget-header .mobile-widget__close {
+    inset: auto 0 0 auto;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%)
+}
+
+#mobile-widget-header .v-icon__svg {
+    height: 1em;
+    width: 1em
+}
+    </style>
+</head>
+<body>
+<div class="hero-content">
+    <div class="mobile-booking-widget mobile-booking-widget__wrapper">
+<button class="btn-block btn-block--primary js-open-widget" data-widget-id="64ba70ffe4702" aria-expanded="false" aria-controls="64ba70ffe4702">Book Now</button>
+<a href="tel: 1 415 348 1111" class="contact-us-btn">
+<svg viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" id="phone" class="v-icon__icon v-icon__svg v-icon__icon--phone"><path d="M20.25 22.388h-.145C3.415 21.428 1.045 7.346.714 3.048A2.548 2.548 0 013.058.305h4.68a1.699 1.699 0 011.58 1.07l1.291 3.176a1.698 1.698 0 01-.374 1.835L8.426 8.212a7.959 7.959 0 006.438 6.455l1.843-1.826a1.699 1.699 0 011.843-.348l3.203 1.282a1.699 1.699 0 011.044 1.58v4.485a2.548 2.548 0 01-2.548 2.548zM3.261 2.003a.85.85 0 00-.85.85v.068C2.804 7.949 5.31 19.84 20.199 20.689a.85.85 0 00.9-.798v-4.536l-3.201-1.282-2.438 2.42-.408-.05C7.661 15.515 6.66 8.126 6.66 8.05l-.05-.408L9.02 5.205 7.747 2.003H3.262z" fill="white"/></svg><span class="contact-us-btn__num">1 415 348 1111</span><span class="contact-us-btn__label">Call</span></a>
+<form id="mobile-widget-64ba70ffe4702" class="mobile-widget js-booking-widget" action="https://be.synxis.com/" method="get" target="_blank" data-visible="false">
+<div class="mobile-widget__close js-mobile-close">Close</div>
+<input type="hidden" name="chain" value="25538">
+<input type="hidden" name="hotel" value="65827">
+<input type="hidden" name="adult" value="2">
+<input type="hidden" name="child" value="0">
+<div class="mobile-widget__item--date">
+<div class="mobile-widget__item">
+<label role="presentation">Arrival &amp; Departure</label>
+<div class="mobile-widget__item-wrapper">
+<div class="mobile-widget__item-wrapper--arrow">
+<span>
+<svg viewBox="4 4 25 25" xmlns="http://www.w3.org/2000/svg" id="calendar" class="v-icon__icon v-icon__svg v-icon__icon--calendar"><path d="M21.836 9.327h-.879v-.074a.89.89 0 00-.888-.888.89.89 0 00-.887.888v.074H14.07v-.074a.89.89 0 00-.888-.888.89.89 0 00-.887.888v.074h-.88a2.294 2.294 0 00-2.288 2.29v10.421a2.292 2.292 0 002.289 2.29h10.422a2.292 2.292 0 002.289-2.29V11.616a2.292 2.292 0 00-2.29-2.289zm-10.934 5.426H22.35v7.284c0 .283-.231.513-.514.513H11.417a.515.515 0 01-.513-.513v-7.284h-.002zm3.168-3.649h5.11a.89.89 0 00.888.884.89.89 0 00.888-.884h.879c.282 0 .513.231.513.514v1.36H10.902v-1.359c0-.282.231-.513.514-.513h.877a.89.89 0 00.888.883.89.89 0 00.888-.883l.001-.002z" fill="black"/></svg>
+</span><button class="js-dates date-toggle">Select Dates</button>
+</div>
+</div>
+</div>
+<input type="hidden" name="arrive" value="">
+<input type="hidden" name="depart" value="">
+</div>
+<div class="mobile-widget__item mobile-widget__item--guests">
+<label role="presentation">Guests</label>
+<div class="mobile-widget__item-wrapper">
+<div class="mobile-widget__item-wrapper--arrow">
+<span>
+<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" id="guests" class="v-icon__icon v-icon__svg v-icon__icon--guests"><path d="M21.673 20.2l-1.308-4.923a2.372 2.372 0 00-1.601-1.866l-2.704-.897a2.379 2.379 0 00-2.455.588l-2.38 2.41-2.38-2.41a2.379 2.379 0 00-2.455-.588l-2.704.897c-.838.279-1.455.984-1.587 1.792L.79 20.2a.905.905 0 00.661 1.117.926.926 0 001.117-.647l1.337-5.085a.524.524 0 01.368-.426l2.704-.896a.524.524 0 01.558.132l3.027 3.072c.324.338.97.338 1.308 0l3.028-3.072a.548.548 0 01.573-.132l2.704.896c.206.074.338.236.382.515l1.323 5.01c.102.398.47.677.881.677.074 0 .162 0 .235-.03a.914.914 0 00.647-1.116l.03-.015zM11.24 11c2.527 0 4.585-2.145 4.585-4.776V5.122c0-2.63-2.058-4.776-4.586-4.776-2.527 0-4.585 2.146-4.585 4.776v1.102c0 2.63 2.058 4.777 4.585 4.777zM8.476 6.225V5.122c0-1.616 1.234-2.939 2.762-2.939 1.529 0 2.763 1.323 2.763 2.94v1.101c0 1.617-1.234 2.94-2.763 2.94-1.528 0-2.762-1.323-2.762-2.94z" fill="black"/></svg></span><button class="js-guests guest-toggle" aria-expanded="false" aria-controls="guest-select-64ba70ffe4702" aria-label="Select the number of guests">2</button>
+</div>
+<div id="guest-select-64ba70ffe4702" class="mobile-widget__guests" data-expanded="false">
+<div class="mobile-widget__guests__control-row">
+<span class="mobile-widget__guests__label">Adults</span>
+<button class="mobile-widget__guests__control mobile-widget__guests__control--decrease js-minus" data-input="adults" aria-label="Decrease the number of adult guests"></button>
+<span class="mobile-widget__guests__value js-adults" data-min="1" data-max="8">2</span>
+<button class="mobile-widget__guests__control mobile-widget__guests__control--increase js-plus" data-input="adults" aria-label="Increase the number of adult guests"></button>
+</div>
+<div class="mobile-widget__guests__control-row">
+<span class="mobile-widget__guests__label">Children</span>
+<button class="mobile-widget__guests__control mobile-widget__guests__control--decrease js-minus" data-input="children" aria-label="Decrease the number of child guests" disabled=""></button>
+<span class="mobile-widget__guests__value js-children" data-min="0" data-max="8">0</span>
+<button class="mobile-widget__guests__control mobile-widget__guests__control--increase js-plus" data-input="children" aria-label="Increase the number of child guests"></button>
+</div>
+</div>
+</div>
+</div>
+<div class="mobile-widget__item mobile-widget__item--promo">
+<label for="promo-code-64ba70ffe4702">Promo Code</label>
+<div class="mobile-widget__item-wrapper">
+<div class="mobile-widget__item-wrapper--plus">
+<input id="promo-code-64ba70ffe4702" type="text" name="promo" value="" placeholder="+ Enter Code">
+</div>
+</div>
+</div>
+<button class="btn-block btn-block--primary"><span></span>Book Now</button>
+</form>
+</div>
+
+
+
+<form id="hero-booking-widget-649e4535da828" class="hero-booking-widget js-booking-widget" action="https://be.synxis.com/" method="get" target="_blank">
+<input type="hidden" name="chain" value="25538">
+<input type="hidden" name="hotel" value="65827">
+<input type="hidden" name="adult" value="2">
+<input type="hidden" name="child" value="0">
+<div class="hero-booking-widget__item hero-booking-widget__item--date">
+<label role="presentation">Arrival &amp; Departure</label>
+<div class="hero-booking-widget__item-wrapper">
+<div class="hero-booking-widget__item-wrapper--arrow">
+<span><svg class="v-icon__svg v-icon__svg--calendar" role="presentation"><use xlink:href="/content/themes/base/assets/img/icons/calendar.svg#calendar"></use></svg></span><button class="js-dates date-toggle">Select Dates</button>
+</div>
+</div>
+<input type="hidden" name="arrive" value="">
+<input type="hidden" name="depart" value="">
+</div>
+<div class="hero-booking-widget__item hero-booking-widget__item--guests">
+<label role="presentation">Guests</label>
+<div class="hero-booking-widget__item-wrapper">
+<div class="hero-booking-widget__item-wrapper--arrow">
+<span><svg class="v-icon__svg v-icon__svg--guests" role="presentation"><use xlink:href="/content/themes/base/assets/img/icons/guests.svg#guests"></use></svg></span><button class="js-guests guest-toggle" aria-expanded="false" aria-controls="guest-select-649e4535da828" aria-label="Select the number of guests">2</button>
+</div>
+
+</div>
+</div>
+<div class="hero-booking-widget__item hero-booking-widget__item--promo">
+<label for="promo-code-649e4535da828">Promo Code</label>
+<div class="hero-booking-widget__item-wrapper">
+<div class="hero-booking-widget__item-wrapper--plus">
+<input id="promo-code-649e4535da828" type="text" name="promo" value="" placeholder="+ Enter Code" class="">
+</div>
+</div>
+</div>
+<button class="btn hero-booking-widget__submit link link--primary-icon"><span></span>Book Now</button>
+<div id="guest-select-649e4535da828" class="hero-booking-widget__guests" data-expanded="false">
+<div class="hero-booking-widget__guests__control-row">
+<span class="hero-booking-widget__guests__label">Adults</span>
+<button class="hero-booking-widget__guests__control hero-booking-widget__guests__control--decrease js-minus" data-input="adults" aria-label="Decrease the number of adult guests"></button>
+<span class="hero-booking-widget__guests__value js-adults" data-min="1" data-max="8">2</span>
+<button class="hero-booking-widget__guests__control hero-booking-widget__guests__control--increase js-plus" data-input="adults" aria-label="Increase the number of adult guests"></button>
+</div>
+<div class="hero-booking-widget__guests__control-row">
+<span class="hero-booking-widget__guests__label">Children</span>
+ <button class="hero-booking-widget__guests__control hero-booking-widget__guests__control--decrease js-minus" data-input="children" aria-label="Decrease the number of child guests" disabled=""></button>
+<span class="hero-booking-widget__guests__value js-children" data-min="0" data-max="8">0</span>
+<button class="hero-booking-widget__guests__control hero-booking-widget__guests__control--increase js-plus" data-input="children" aria-label="Increase the number of child guests"></button>
+</div>
+</div>
+</form>
+</div>
+<script src = "https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+
+<script>
+    function format_date(date, format=null) {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let month = date.getMonth();
+    let day = date.getDate();
+    let year = date.getFullYear();
+    let array = [];
+    switch (format) {
+    case 'Y-m':
+        return date.toISOString().slice(0, 7);
+    case 'm/d/Y':
+        array = [(month + 1).toString().padStart(2, '0'), day.toString().padStart(2, '0'), year]
+        return array.join('/');
+    case 'd-m-Y':
+        array = [day.toString().padStart(2, '0'), (month + 1).toString().padStart(2, '0'), year]
+        return array.join('-');
+    case 'Y-m-d':
+        return date.toISOString().slice(0, 10);
+    case 'F j':
+        return months[month] + ' ' + day;
+    case 'M j':
+        return months[month].slice(0, 3) + ' ' + day;
+    case 'F j, Y':
+    default:
+        return months[month] + ' ' + day + ', ' + year;
+    }
+};
+document.addEventListener('DOMContentLoaded', ()=>{
+    let widgets = document.querySelectorAll('.js-booking-widget');
+    widgets.forEach((widget)=>{
+        let guest = widget.querySelector('.js-guests');
+        let dates = widget.querySelector('.js-dates');
+        let popupID = guest.getAttribute('aria-controls');
+        let popup = widget.querySelector(`#${popupID}`);
+        let inputs = {
+            adults: widget.querySelector('input[name="adult"]'),
+            children: widget.querySelector('input[name="child"]')
+        };
+        let values = {
+            adults: 2,
+            children: 0
+        };
+        let labels = {
+            adults: widget.querySelector('.js-adults'),
+            children: widget.querySelector('.js-children')
+        };
+        guest.addEventListener('click', (e)=>{
+            e.preventDefault();
+            let expand = guest.getAttribute('aria-expanded') === 'false';
+            if (expand && widget.classList.contains('hero-booking-widget')) {
+                let posX = guest.parentElement.getBoundingClientRect().left;
+                let posY = guest.parentElement.getBoundingClientRect().top + window.scrollY;
+                console.log(posY)
+                popup.style.top = (posY + guest.parentElement.clientHeight) + 'px';
+                popup.style.left = posX + 'px';
+            }
+            guest.setAttribute('aria-expanded', expand.toString());
+            popup.setAttribute('data-expanded', expand.toString());
+        }
+        )
+        let plus = widget.querySelectorAll('.js-plus');
+        let minus = widget.querySelectorAll('.js-minus');
+        plus.forEach((btn)=>{
+            btn.addEventListener('click', (e)=>{
+                e.preventDefault();
+                adjustGuests(btn, 1);
+                updateGuests();
+            }
+            )
+        }
+        )
+        minus.forEach((btn)=>{
+            btn.addEventListener('click', (e)=>{
+                e.preventDefault();
+                adjustGuests(btn, -1);
+                updateGuests();
+            }
+            )
+        }
+        )
+        let updateGuests = ()=>{
+            let count = 0;
+            for (let input in inputs) {
+                inputs[input].value = values[input];
+                count += values[input];
+            }
+            guest.innerText = count.toString();
+        }
+        let adjustGuests = (button,value)=>{
+            let target = button.getAttribute('data-input');
+            let min = labels[target].getAttribute('data-min');
+            let max = labels[target].getAttribute('data-max');
+            let plus = button.parentNode.querySelector('.js-plus');
+            let minus = button.parentNode.querySelector('.js-minus');
+            let current = parseInt(labels[target].innerText);
+            current += value;
+            plus.disabled = current >= max;
+            minus.disabled = current <= min;
+            labels[target].innerText = current;
+            values[target] = current;
+        }
+        updateGuests();
+        let start = new Date();
+        let next = new Date();
+        next.setDate(next.getDate() + 1);
+        let label = widget.querySelector('.js-dates');
+        let DateValues = {
+            arrive: start,
+            depart: next
+        }
+        let DateInputs = {
+            arrive: widget.querySelector('input[name="arrive"]'),
+            depart: widget.querySelector('input[name="depart"]')
+        }
+        let datepicker = new Litepicker({
+            element: dates,
+            singleMode: false,
+            plugins: ['keyboardnav'],
+            position: 'auto',
+            showTooltip: false,
+            minDate: +DateValues.arrive,
+            firstDay: 0,
+            scrollToDate: true,
+            format: 'YYYY-MM-DD',
+            numberOfMonths: widget.classList.contains('hero-booking-widget') ? 2 : 1,
+            numberOfColumns: widget.classList.contains('hero-booking-widget') ? 2 : 1,
+        });
+        dates.addEventListener('click', function(e) {
+            e.preventDefault();
+            datepicker.show();
+        });
+        let update_dates = ()=>{
+            for (let input in DateInputs) {
+                DateInputs[input].value = DateValues[input].toISOString().slice(0, 10);
+            }
+            label.innerText = format_date(DateValues.arrive, 'M j') + ' - ' + format_date(DateValues.depart, 'M j');
+        }
+        ;
+        datepicker.on('selected', (arrive,depart)=>{
+            DateValues.arrive = arrive.dateInstance;
+            DateValues.depart = depart.dateInstance;
+            update_dates();
+        }
+        );
+        document.addEventListener('keydown', (e)=>{
+            if (e.keyCode === 27) {
+                datepicker.hide();
+            }
+        }
+        );
+        let close = ()=>{
+            guest.setAttribute('aria-expanded', 'false');
+            popup.setAttribute('data-expanded', 'false');
+        }
+        ['click', 'focusin'].forEach((event)=>{
+            document.addEventListener(event, (e)=>{
+                if (e.target !== guest && !popup.contains(e.target)) {
+                    close();
+                }
+            }
+            );
+        }
+        );
+        if (widget.classList.contains('hero-booking-widget')) {
+            document.querySelector('body').insertAdjacentElement('beforeend', popup);
+        }
+    }
+    );
+    let mobile_toggles = document.querySelectorAll('.js-open-widget');
+    mobile_toggles.forEach(function(toggle) {
+        let id = toggle.getAttribute('data-widget-id');
+        let widget = document.querySelector(`#mobile-widget-${id}`);
+        toggle.addEventListener('click', (e)=>{
+            e.preventDefault();
+            let visible = toggle.getAttribute('aria-expanded') === 'false';
+            widget.setAttribute('data-visible', visible.toString());
+            toggle.setAttribute('aria-expanded', visible.toString());
+        }
+        );
+        widget.querySelector('.js-mobile-close').addEventListener('click', (e)=>{
+            e.preventDefault();
+            widget.setAttribute('data-visible', 'false');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+        );
+    });
+}
+);
+    
+</script>
+
+</body>
+</html> 
